@@ -8,9 +8,28 @@
 </head>
 <body>
     <header class="flex justify-between px-8 items-center bg-[#6667AB] h-28">
-        <img class="h-40" src="img/TaskNest.png" alt="logo">
-        <button class="bg-[#f04f67] py-3 px-7 rounded-xl text-white hover">Add Task</button>
+        <a href="index.html"><img class="h-40" src="img/TaskNest.png" alt="logo"></a>
+        <button class="bg-[#f04f67] py-3 px-7 rounded-xl text-white hover:bg-red-600 hover:duration-700">Add Task</button>
     </header>
-    <section></section>
+    <section>
+        <div id="cardContainer" class="flex justify-around mt-10">
+            <!-- todo -->
+            <div class="h-[33em] w-96 shadow-2xl rounded-xl border-2 overflow-y-auto">
+                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white sticky inset-0">To Do</h2>
+                <p></p>
+            </div>
+            <!-- In progress -->
+            <div class=" h-[33em] w-96 shadow-2xl rounded-xl border-2">
+                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white">In Progress</h2>
+                <p></p>
+            </div>
+            <!-- Done -->
+            <div class="h-[33em] w-96 shadow-2xl rounded-xl border-2">
+                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white">Done</h2>
+                <p></p>
+            </div>
+
+        </div>
+    </section>
 </body>
 </html>
