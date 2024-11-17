@@ -9,27 +9,86 @@
 <body>
     <header class="flex justify-between px-8 items-center bg-[#6667AB] h-28">
         <a href="index.html"><img class="h-40" src="img/TaskNest.png" alt="logo"></a>
-        <button class="bg-[#f04f67] py-3 px-7 rounded-xl text-white hover:bg-red-600 hover:duration-700">Add Task</button>
+        <button class="bg-[#f04f67] py-3 px-7 rounded-xl text-white hover:bg-red-600 hover:duration-700" onclick="document.getElementById('mainmodal').style.display = 'flex'">Add Task</button>
     </header>
     <section>
-        <div id="cardContainer" class="flex justify-around mt-10">
+        <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-3 md:ml-24 justify-center mt-10">
             <!-- todo -->
             <div class="h-[33em] w-96 shadow-2xl rounded-xl border-2 overflow-y-auto">
                 <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white sticky inset-0">To Do</h2>
-                <p></p>
+                <p id="todo-tasks"></p>
             </div>
             <!-- In progress -->
             <div class=" h-[33em] w-96 shadow-2xl rounded-xl border-2">
                 <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white">In Progress</h2>
-                <p></p>
+                <p id="inProgress-tasks"></p>
             </div>
             <!-- Done -->
             <div class="h-[33em] w-96 shadow-2xl rounded-xl border-2">
                 <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white">Done</h2>
-                <p></p>
+                <p id="done-tasks"></p>
             </div>
 
         </div>
     </section>
+
+<!-- Main Modal -->
+<div class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50" id="mainmodal">
+    <div class="bg-white rounded-lg p-6 w-full max-w-md">
+      
+      <form id="form" class="grid grid-cols-1 gap-5">
+        <input
+          id="task-title"
+          type="text"
+          class="h-12 px-5 rounded-2xl border border-gray-300"
+          placeholder="Enter Your Task Title"
+        />
+        <input
+          id="input-date"
+          type="date"
+          class="h-12 px-5 rounded-2xl border border-gray-300"
+        />
+        <input
+          id="Add-disc"
+          type="text"
+          class="h-12 px-5 rounded-2xl border border-gray-300"
+          placeholder="Enter Your Description"
+        />
+  
+        <select id="pSelection" class="px-4 rounded-2xl h-12 border border-gray-300">
+          <option value="" disabled selected>Select priorety</option>
+          <option value="priorety 1">Priorety 1</option>
+          <option value="priorety 2">Priorety 2</option>
+          <option value="priorety 3">Priorety 3</option>
+        </select>
+  
+        <select id="status" class="px-4 rounded-2xl h-12 border border-gray-300">
+          <option value="" disabled selected>Status</option>
+          <option value="todo">To Do</option>
+          <option value="doing">In Progress</option>
+          <option value="done">Done</option>
+        </select>
+        <div class="flex justify-between mt-6">
+        <button
+          id="addbtn"
+          type="submit"
+          class=" w-40 rounded-2xl hover:text-white bg-[#f04f67] hover:bg-red-600 hover:duration-700 h-12"
+        >
+          Add Task
+        </button>
+        <button
+          id="Cancelbtn"
+          type="button"
+          class="w-40 rounded-2xl bg-gray-200 duration-300 h-12 hover:bg-gray-400 hover:text-white"
+          onclick="document.getElementById('mainmodal').style.display = 'none'"
+          >
+        Cancel
+        </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+  
 </body>
 </html>
