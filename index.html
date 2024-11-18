@@ -12,11 +12,21 @@
         <button class="bg-[#f04f67] py-3 px-7 rounded-xl text-white hover:bg-red-600 hover:duration-700" onclick="document.getElementById('mainmodal').style.display = 'flex'">Add Task</button>
     </header>
     <section>
-        <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-3 md:ml-24 justify-center mt-10">
+        <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-3 md:ml-24 mt-10">
             <!-- todo -->
             <div class="h-[33em] w-96 shadow-2xl rounded-xl border-2 overflow-y-auto">
                 <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white sticky inset-0">To Do</h2>
-                <p id="todo-tasks"></p>
+                <p id="todo-tasks">
+                    <div class="bg-blue-400 p-3 mt-3">
+                        <h2>TITLE</h2>
+                        <p>hehehehe</p>
+                        <p>20-20-2022</p>
+                        <div class="flex gap-3 justify-end">
+                            <button class="bg-green-400 py-2 px-4 rounded-xl">EDIT</button>
+                            <button class="bg-red-400 py-2 px-4 rounded-xl">DELETE</button>
+                        </div>
+                    </div>
+                </p>
             </div>
             <!-- In progress -->
             <div class=" h-[33em] w-96 shadow-2xl rounded-xl border-2">
@@ -56,14 +66,14 @@
         />
   
         <select id="pSelection" class="px-4 rounded-2xl h-12 border border-gray-300">
-          <option value="" disabled selected>Select priorety</option>
+          <option value="Pvide" disabled selected>Select priorety</option>
           <option value="priorety 1">Priorety 1</option>
           <option value="priorety 2">Priorety 2</option>
           <option value="priorety 3">Priorety 3</option>
         </select>
   
         <select id="status" class="px-4 rounded-2xl h-12 border border-gray-300">
-          <option value="" disabled selected>Status</option>
+          <option value="statusprogress" disabled selected>Status</option>
           <option value="todo">To Do</option>
           <option value="doing">In Progress</option>
           <option value="done">Done</option>
@@ -89,6 +99,9 @@
     </div>
   </div>
 </div>
+
+
+<script src="script.js"></script>
   
 </body>
 </html>
