@@ -20,6 +20,14 @@ myForm.addEventListener("submit", function(event){
 
     event.preventDefault()
 
+    nowDate = new Date()
+    nowDate.setHours(0,0,0,0);
+    entredDate = new Date(taskDate.value)
+    if(nowDate > entredDate){
+        alert("please Enter a valid date!");
+        return;
+    }
+
     if(taskTitle.value !== "" &&
         taskDate.value !== "" &&
         taskDesc.value !== "" &&
