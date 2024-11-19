@@ -15,19 +15,28 @@
         <div id="cardContainer" class="grid grid-cols-1 sm:grid-cols-2 sm:justify-center sm:gap-8 md:grid-cols-3 mt-10 ">
             <!-- todo -->
             <div class="h-[33em] shadow-2xl rounded-xl border-2 overflow-y-auto">
-                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white sticky unset-0">To Do</h2>
+              <div class="flex justify-between items-center bg-[#f04f67] sticky unset-0">
+                <h2 class="bg-[rgb(240,79,103)] rounded-t-xl p-3 font-mono text-2xl text-white ">To Do</h2>
+                <p id="todoCount" class=" sticky inset-0 p-3 text-white">0</p>
+              </div>
                 <p id="todo-tasks">
                     
                 </p>
             </div>
             <!-- In progress -->
             <div class=" h-[33em] shadow-2xl rounded-xl border-2 overflow-y-auto">
-                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white sticky inset-0">In Progress</h2>
+              <div class="flex justify-between items-center bg-[#f04f67] sticky inset-0">
+                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white ">In Progress</h2>
+                <p id="doingCount" class=" sticky inset-0 p-3 text-white">0</p>
+              </div>
                 <p id="inProgress-tasks"></p>
             </div>
             <!-- Done -->
             <div class="h-[33em] shadow-2xl rounded-xl border-2 overflow-y-auto">
-                <h2 class="bg-[#f04f67] rounded-t-xl p-3 font-mono text-2xl text-white sticky inset-0">Done</h2>
+              <div class="flex justify-between items-center bg-[#f04f67]  sticky inset-0">
+                <h2 class=" rounded-t-xl p-3 font-mono text-2xl text-white">Done</h2>
+                <p id="doneCount" class="sticky inset-0 p-3 text-white">0</p>
+              </div>
                 <p id="done-tasks"></p>
             </div>
 
@@ -89,6 +98,63 @@
       </div>
       </form>
     </div>
+  </div>
+
+
+<!-- Editmodal -->
+<div class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50" id="Editmodal">
+  <div class="bg-white rounded-lg p-6 w-full max-w-md">
+    
+    <form id="form" class="grid grid-cols-1 gap-5">
+      <input
+        id="edit-task-title"
+        type="text"
+        class="h-12 px-5 rounded-2xl border border-gray-300"
+        placeholder="Enter Your Task Title"
+      />
+      <input
+        id="edit-input-date"
+        type="date"
+        class="h-12 px-5 rounded-2xl border border-gray-300"
+      />
+      <input
+        id="edit-Add-disc"
+        type="text"
+        class="h-12 px-5 rounded-2xl border border-gray-300"
+        placeholder="Enter Your Description"
+      />
+
+      <select id="edit-pSelection" class="px-4 rounded-2xl h-12 border border-gray-300">
+        <option value="Pvide" disabled selected>Select priorety</option>
+        <option value="priorety 1">Priorety 1</option>
+        <option value="priorety 2">Priorety 2</option>
+        <option value="priorety 3">Priorety 3</option>
+      </select>
+
+      <select id="edit-status" class="px-4 rounded-2xl h-12 border border-gray-300">
+        <option value="statusprogress" disabled selected>Status</option>
+        <option value="todo">To Do</option>
+        <option value="doing">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+      <div class="flex justify-between mt-6">
+      <button
+        id="edit-addbtn"
+        type="submit"
+        class=" w-40 rounded-2xl hover:text-white bg-[#f04f67] hover:bg-red-600 hover:duration-700 h-12"
+      >
+        Save Changes
+      </button>
+      <button
+        id="edit-Cancelbtn"
+        type="button"
+        class="w-40 rounded-2xl bg-gray-200 duration-300 h-12 hover:bg-gray-400 hover:text-white"
+        onclick="document.getElementById('Editmodal').style.display = 'none'"
+        >
+      Cancel
+      </button>
+    </div>
+    </form>
   </div>
 </div>
 

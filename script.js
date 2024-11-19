@@ -59,6 +59,14 @@ function taskAdding(taskArr){
     toDoTask.innerHTML = "";
     inProgressTask.innerHTML = "";
     doneTask.innerHTML = "";
+
+    let todoCount = taskArr.filter(taskObj => taskObj.stat === "todo").length
+    let inProgressCount = taskArr.filter(taskObj => taskObj.stat === "doing").length
+    let doneCount = taskArr.filter(taskObj => taskObj.stat === "done").length
+
+    document.getElementById("todoCount").innerHTML = todoCount;
+    document.getElementById("doingCount").innerHTML = inProgressCount;
+    document.getElementById("doneCount").innerHTML = doneCount;
     
     
     
@@ -106,13 +114,54 @@ function taskAdding(taskArr){
             addDataToLocalStorage();
         }
     });
-    
 
+    let editButton = div.querySelector("#editBtn");
+
+    editButton.addEventListener("click", function(){
+        document.getElementById("Editmodal").style.display = "flex";
+
+        editIndex = index ;
+
+    
+        document.getElementById("edit-task-title").value = taskArr[editIndex].tasktitle;
+        document.getElementById("edit-input-date").value = taskArr[editIndex].dateVal;
+        document.getElementById("edit-Add-disc").value = taskArr[editIndex].description;
+        document.getElementById("edit-pSelection").value = taskArr[editIndex].pr;
+        document.getElementById("edit-status").value = taskArr[editIndex].stat;
+
+
+        
+
+        
+    })
+
+    document.getElementById("edit-addbtn").addEventListener("click",function(event){
+        event.preventDefault();
+            let editObj = {
+                tasktitle : document.getElementById("edit-task-title").value,
+                dateVal : document.getElementById("edit-input-date").value,
+                description : document.getElementById("edit-Add-disc").value,
+                pr : document.getElementById("edit-pSelection").value,
+                stat : document.getElementById("edit-status").value,
+            }
+
+            taskArr[editIndex] = editObj;
+
+            taskAdding(taskArr);
+            addDataToLocalStorage();
+            document.getElementById('Editmodal').style.display = 'none'
+            
+        })
+
+
+    
 
 
         
 
     });
+
+
 
     
     
