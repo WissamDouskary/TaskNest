@@ -9,24 +9,16 @@ let toDoTask = document.getElementById("todo-tasks");
 let inProgressTask = document.getElementById("inProgress-tasks");
 let doneTask = document.getElementById("done-tasks");
 
-
 var taskArr = [];
 var taskObj = {};
 
 getDataFromLocalStorage();
 
-
 myForm.addEventListener("submit", function(event){
 
-    event.preventDefault()
+    event.preventDefault();
 
-    nowDate = new Date()
-    nowDate.setHours(0,0,0,0);
-    entredDate = new Date(taskDate.value)
-    if(nowDate > entredDate){
-        alert("please Enter a valid date!");
-        return;
-    }
+    if(dateValidation()){
 
     if(taskTitle.value !== "" &&
         taskDate.value !== "" &&
@@ -41,6 +33,7 @@ myForm.addEventListener("submit", function(event){
     }else{
         alert("please fill all the fields");
         modalOpen();
+    }
     }
 
     taskTitle.value = "" 
@@ -59,7 +52,6 @@ function pushToArray(title, date , desc, priorety, status){
         stat: status.value,
     }
     taskArr.push(taskObj);
-    
 }
 
 function taskAdding(taskArr){
@@ -75,8 +67,6 @@ function taskAdding(taskArr){
     document.getElementById("todoCount").innerHTML = todoCount;
     document.getElementById("doingCount").innerHTML = inProgressCount;
     document.getElementById("doneCount").innerHTML = doneCount;
-    
-    
     
     taskArr.forEach((taskObj, index) => {
         
@@ -98,7 +88,6 @@ function taskAdding(taskArr){
         } else if(taskObj.stat === "done"){
             doneTask.appendChild(div);
         }
-
 
         if(taskObj.pr === "priorety 1"){
             div.style.backgroundColor = 'rgb(252 165 165)';
@@ -130,21 +119,20 @@ function taskAdding(taskArr){
 
         editIndex = index ;
 
-    
         document.getElementById("edit-task-title").value = taskArr[editIndex].tasktitle;
         document.getElementById("edit-input-date").value = taskArr[editIndex].dateVal;
         document.getElementById("edit-Add-disc").value = taskArr[editIndex].description;
         document.getElementById("edit-pSelection").value = taskArr[editIndex].pr;
         document.getElementById("edit-status").value = taskArr[editIndex].stat;
 
-
-        
-
-        
     })
-
+    
     document.getElementById("edit-addbtn").addEventListener("click",function(event){
+        
         event.preventDefault();
+
+        if(EditdateValidation()){
+
             let editObj = {
                 tasktitle : document.getElementById("edit-task-title").value,
                 dateVal : document.getElementById("edit-input-date").value,
@@ -152,67 +140,41 @@ function taskAdding(taskArr){
                 pr : document.getElementById("edit-pSelection").value,
                 stat : document.getElementById("edit-status").value,
             }
-
+        
             taskArr[editIndex] = editObj;
 
             taskAdding(taskArr);
             addDataToLocalStorage();
             document.getElementById('Editmodal').style.display = 'none'
-            
-        })
-
-
-    
-
-
-        
-
+        }
+        });
     });
 
-
-
-    
-    
-
-    
 }
 
+//addtask date validator
+function dateValidation(){
+    let ourDate = new Date();
+    ourDate.setHours(0,0,0,0);
+    let dateValue = new Date(taskDate.value);
+    if(ourDate > dateValue){
+        alert("please Enter a valid date!");
+        return false;
+    }
+    return true;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//edit date validator
+function EditdateValidation(){
+    let ourDate = new Date();
+    ourDate.setHours(0,0,0,0);
+    let dateValue = new Date(document.getElementById("edit-input-date").value);
+    if(ourDate > dateValue){
+        alert("please Enter a valid date!");
+        return false;
+    }
+    return true;
+}
 
 // modal functions 
 function modalClose(){
