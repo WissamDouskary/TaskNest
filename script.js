@@ -20,11 +20,11 @@ myForm.addEventListener("submit", function(event){
 
     if(dateValidation()){
 
-    if(taskTitle.value !== "" &&
-        taskDate.value !== "" &&
-        taskDesc.value !== "" &&
-        prioretySelect.value !== "Pvide" &&
-        statueSelector.value !== "statusprogress"
+    if(taskTitle.value.trim() !== "" &&
+        taskDate.value.trim() !== "" &&
+        taskDesc.value.trim() !== "" &&
+        prioretySelect.value.trim() !== "Pvide" &&
+        statueSelector.value.trim() !== "statusprogress"
     ){
         pushToArray(taskTitle, taskDate , taskDesc, prioretySelect, statueSelector);
         addDataToLocalStorage()
@@ -45,11 +45,11 @@ myForm.addEventListener("submit", function(event){
 
 function pushToArray(title, date , desc, priorety, status){
     taskObj = {
-        tasktitle: title.value,
-        dateVal: date.value,
-        description: desc.value,
-        pr: priorety.value,
-        stat: status.value,
+        tasktitle: title.value.trim(),
+        dateVal: date.value.trim(),
+        description: desc.value.trim(),
+        pr: priorety.value.trim(),
+        stat: status.value.trim(),
     }
     taskArr.push(taskObj);
 }
@@ -132,13 +132,18 @@ function taskAdding(taskArr){
         event.preventDefault();
 
         if(EditdateValidation()){
-
+            if(document.getElementById("edit-task-title").value.trim() !== "" &&
+            document.getElementById("edit-input-date").value.trim() !== "" &&
+            document.getElementById("edit-Add-disc").value.trim() !== "" &&
+            document.getElementById("edit-pSelection").value.trim() !== "Pvide" &&
+            document.getElementById("edit-status").value.trim() !== "statusprogress"
+        ){
             let editObj = {
-                tasktitle : document.getElementById("edit-task-title").value,
-                dateVal : document.getElementById("edit-input-date").value,
-                description : document.getElementById("edit-Add-disc").value,
-                pr : document.getElementById("edit-pSelection").value,
-                stat : document.getElementById("edit-status").value,
+                tasktitle : document.getElementById("edit-task-title").value.trim(),
+                dateVal : document.getElementById("edit-input-date").value.trim(),
+                description : document.getElementById("edit-Add-disc").value.trim(),
+                pr : document.getElementById("edit-pSelection").value.trim(),
+                stat : document.getElementById("edit-status").value.trim(),
             }
         
             taskArr[editIndex] = editObj;
@@ -146,6 +151,9 @@ function taskAdding(taskArr){
             taskAdding(taskArr);
             addDataToLocalStorage();
             document.getElementById('Editmodal').style.display = 'none'
+        }else{
+            alert("please fill all fields!");
+        }
         }
         });
     });
